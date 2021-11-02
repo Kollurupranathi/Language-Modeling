@@ -64,7 +64,6 @@ Returns: dict mapping strs to ints
 '''
 def countUnigrams(corpus):
     d={}
-    q=buildVocabulary(corpus)
     for i in corpus:
         for j in i:
             if j not in d:
@@ -81,7 +80,11 @@ Parameters: 2D list of strs
 Returns: list of strs
 '''
 def getStartWords(corpus):
-    return
+    w=[]
+    for i in corpus:
+        if i[0] not in w:
+            w.append(i[0])
+    return w
 
 
 '''
@@ -91,7 +94,13 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to ints
 '''
 def countStartWords(corpus):
-    return
+    counts={}
+    for i in corpus:
+            if i[0] not in counts:
+                counts[i[0]]=1
+            else:
+                counts[i[0]]+=1
+    return counts
 
 
 '''
@@ -313,7 +322,9 @@ if __name__ == "__main__":
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     # test.runWeek1()
-    test.testCountUnigrams()
+    #test.testCountUnigrams()
+    test.testGetStartWords()
+    test.testCountStartWords()
     ## Uncomment these for Week 2 ##
 """
     print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
