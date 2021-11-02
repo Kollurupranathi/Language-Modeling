@@ -64,7 +64,6 @@ Returns: dict mapping strs to ints
 '''
 def countUnigrams(corpus):
     d={}
-    q=buildVocabulary(corpus)
     for i in corpus:
         for j in i:
             if j not in d:
