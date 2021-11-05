@@ -146,7 +146,7 @@ Returns: list of floats
 def buildUnigramProbs(unigrams, unigramCounts, totalCount):
     g=[]
     for i in unigrams:
-        g.append((unigramCounts[i]/totalCount))
+        g.append(unigramCounts[i]/totalCount)
     return g
 
 
@@ -237,6 +237,10 @@ Parameters: 2D list of strs
 Returns: None
 '''
 def graphTop50Words(corpus):
+    tempr=buildUnigramProbs(buildVocabulary(corpus),countUnigrams(corpus),getCorpusLength(corpus))
+    v=getTopWords(50,buildVocabulary(corpus),tempr,ignore)
+    barPlot(v,'top 50 words')
+
     return
 
 
@@ -369,8 +373,10 @@ if __name__ == "__main__":
     # test.week1Tests()
     # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
     # test.runWeek1()
-    test.testCountUnigrams()
-    # test.testGenerateTextFromBigrams()
+    # test.testCountUnigrams()
+    print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
+    test.runWeek3()
+    # test.testLoadBook()
     #test.testCountStartWords()
     ## Uncomment these for Week 2 ##
 """
@@ -381,7 +387,6 @@ if __name__ == "__main__":
 """
 
     ## Uncomment these for Week 3 ##
-"""
-    print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
-    test.runWeek3()
-"""
+
+    # print("\n" + "#"*15 + " WEEK 3 OUTPUT " + "#" * 15 + "\n")
+    # test.runWeek3()
