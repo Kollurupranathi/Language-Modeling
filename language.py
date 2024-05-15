@@ -17,7 +17,14 @@ Parameters: str
 Returns: 2D list of strs
 '''
 def loadBook(filename):
-    return
+    f = open(filename)
+    text=[] 
+    temp = f.read().splitlines() 
+    for i in temp: 
+        if len(i) !=0: 
+            text .append( i.split(' ') ) 
+    return text
+   
 
 
 '''
@@ -27,7 +34,11 @@ Parameters: 2D list of strs
 Returns: int
 '''
 def getCorpusLength(corpus):
-    return
+    count=0
+    for i in corpus:
+        for j in range(len(i)):
+            count+=1
+    return count
 
 
 '''
@@ -37,7 +48,12 @@ Parameters: 2D list of strs
 Returns: list of strs
 '''
 def buildVocabulary(corpus):
-    return
+    new=[]
+    for i in corpus:
+        for j in range(len(i)):
+            if i[j] not in new:
+                new.append(i[j])
+    return new
 
 
 '''
@@ -47,7 +63,14 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to ints
 '''
 def countUnigrams(corpus):
-    return
+    d={}
+    for i in corpus:
+        for j in i:
+            if j not in d:
+                d[j]=1
+            else:
+                d[j]+=1        
+    return d
 
 
 '''
@@ -57,7 +80,11 @@ Parameters: 2D list of strs
 Returns: list of strs
 '''
 def getStartWords(corpus):
-    return
+    w=[]
+    for i in corpus:
+        if i[0] not in w:
+            w.append(i[0])
+    return w
 
 
 '''
@@ -67,7 +94,13 @@ Parameters: 2D list of strs
 Returns: dict mapping strs to ints
 '''
 def countStartWords(corpus):
-    return
+    counts={}
+    for i in corpus:
+            if i[0] not in counts:
+                counts[i[0]]=1
+            else:
+                counts[i[0]]+=1
+    return counts
 
 
 '''
@@ -285,11 +318,13 @@ def scatterPlot(xs, ys, labels, title):
 
 # This code runs the test cases to check your work
 if __name__ == "__main__":
-    print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
-    test.week1Tests()
-    print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
-    test.runWeek1()
-
+    # print("\n" + "#"*15 + " WEEK 1 TESTS " +  "#" * 16 + "\n")
+    # test.week1Tests()
+    # print("\n" + "#"*15 + " WEEK 1 OUTPUT " + "#" * 15 + "\n")
+    # test.runWeek1()
+    #test.testCountUnigrams()
+    test.testGetStartWords()
+    test.testCountStartWords()
     ## Uncomment these for Week 2 ##
 """
     print("\n" + "#"*15 + " WEEK 2 TESTS " +  "#" * 16 + "\n")
